@@ -1,0 +1,15 @@
+service: serverless-login-project
+provider:
+  name: aws
+  runtime: nodejs14.x
+functions:
+  app:
+    handler: src/app.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors: true
+          authorizer: aws_iam # or use a custom authorizer
+plugins:
+  - serverless-offline
